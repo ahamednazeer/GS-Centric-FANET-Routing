@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    image: ahamednazeer/medical-prescription-scanner:be-latest
+    container_name: mps-backend
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    # Add any necessary environment variables here
+    # environment:
+    #   - ENV_VAR=value
+
+  frontend:
+    image: ahamednazeer/medical-prescription-scanner:fe-latest
+    container_name: mps-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
